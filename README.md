@@ -1,5 +1,5 @@
 # Banking Project  
-## A) Loan Origination Summary
+## A) Loan Outline
 ![Alt Text](https://github.com/Raghav8283/Finance-Dashboard/blob/main/Images/Summary%20Page.png)
 
 
@@ -34,7 +34,7 @@ The visual above provides data analysis related to loan applications as they sta
 - Maintain marketing efforts consistently to sustain application numbers.
 - Monitor average interest rates and DTI closely to manage risk effectively.
 
-## B) Overview On Loans
+## B) Loan Overview
   ![Alt Text](https://github.com/Raghav8283/Finance-Dashboard/blob/main/Images/Overview%20Page.png)
 
 #### 1. Action Plan:
@@ -43,7 +43,7 @@ The visual above provides data analysis related to loan applications as they sta
 * With DTI ratios rising, it is important for businesses to monitor loan performance closely to identify any potential problems or warning signals at the outset.
 * With interest rates rising, it is important for businesses to offer competitive rates to attract and retain borrowers.
 
-## C) Breakdown
+## C) Loan Breakdown
 ![Alt Text](https://github.com/Raghav8283/Finance-Dashboard/blob/main/Images/Details%20Page.png)
 
 #### 1. Strategy:
