@@ -1,0 +1,55 @@
+table 'Select Measure'
+	lineageTag: a6e0295e-e924-4f43-a56e-1b910175942d
+
+	column 'Select Measure'
+		dataType: string
+		lineageTag: fb1dca0b-97b0-4d12-90cd-a8046ac39ec9
+		summarizeBy: none
+		isDataTypeInferred
+		sourceColumn: [Value1]
+		sortByColumn: 'Select Measure Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Select Measure Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Select Measure Fields'
+		dataType: string
+		isHidden
+		lineageTag: 9a422bf3-eaba-4388-9a6b-8ed4d4a07add
+		summarizeBy: none
+		isDataTypeInferred
+		sourceColumn: [Value2]
+		sortByColumn: 'Select Measure Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Select Measure Order'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: b073a52a-0d78-4485-a42d-daefb413b359
+		summarizeBy: sum
+		isDataTypeInferred
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Select Measure' = calculated
+		mode: import
+		source =
+				{
+				    ("Total Amount Received", NAMEOF('Handy Measures'[Total Amount Received]), 0),
+				    ("Total Funded Amount", NAMEOF('Handy Measures'[Total Funded Amount]), 1),
+				    ("Total Loan Applications", NAMEOF('Handy Measures'[Total Loan Applications]), 2)
+				}
+
+	annotation PBI_Id = 9982dddc60db4936a300dffcc84a2300
+

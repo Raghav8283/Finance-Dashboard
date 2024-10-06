@@ -1,0 +1,29 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-IN
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["Bank_Loan_Data","Dates Table","Dates Bible","Handy Measures"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.136.1202.0 (24.09)
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table Bank_Loan_Data
+ref table DateTableTemplate_ebe8ada0-cbf8-41dc-9cd7-05672b183a88
+ref table LocalDateTable_9e6f5991-ffa5-420e-b907-82cd54fdb641
+ref table LocalDateTable_9b611f8b-45d2-4521-89c6-10507a93dc18
+ref table LocalDateTable_38bb0bbe-abdf-477a-a9c1-8997aedbf9fb
+ref table 'Dates Bible'
+ref table LocalDateTable_67078c6f-9cbb-4381-acfa-48507385ad4a
+ref table LocalDateTable_29e9b50a-ad3c-4bbd-8999-6adf4bb83525
+ref table 'Handy Measures'
+ref table 'Select Measure'
+
+ref cultureInfo en-US
+

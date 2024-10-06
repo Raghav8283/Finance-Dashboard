@@ -1,0 +1,438 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.2.0/schema.json",
+  "name": "5122de163771fbb3428e",
+  "position": {
+    "x": 220.68965517241378,
+    "y": 183.52087114337567,
+    "z": 15000,
+    "height": 511.07078039927404,
+    "width": 1040.7259528130671,
+    "tabOrder": 12000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Bank_Loan_Data"
+                    }
+                  },
+                  "Property": "id"
+                }
+              },
+              "queryRef": "Sum(Bank_Loan_Data.id)",
+              "nativeQueryRef": "ID",
+              "displayName": "ID"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Bank_Loan_Data"
+                    }
+                  },
+                  "Property": "purpose"
+                }
+              },
+              "queryRef": "Bank_Loan_Data.purpose",
+              "nativeQueryRef": "Purpose",
+              "displayName": "Purpose"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Bank_Loan_Data"
+                    }
+                  },
+                  "Property": "home_ownership"
+                }
+              },
+              "queryRef": "Bank_Loan_Data.home_ownership",
+              "nativeQueryRef": "Home Ownership",
+              "displayName": "Home Ownership"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Bank_Loan_Data"
+                    }
+                  },
+                  "Property": "grade"
+                }
+              },
+              "queryRef": "Bank_Loan_Data.grade",
+              "nativeQueryRef": "Grade",
+              "displayName": "Grade"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Bank_Loan_Data"
+                    }
+                  },
+                  "Property": "sub_grade"
+                }
+              },
+              "queryRef": "Bank_Loan_Data.sub_grade",
+              "nativeQueryRef": "Sub Grade",
+              "displayName": "Sub Grade"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Bank_Loan_Data"
+                    }
+                  },
+                  "Property": "issue_date"
+                }
+              },
+              "queryRef": "Bank_Loan_Data.issue_date",
+              "nativeQueryRef": "Issue Date",
+              "displayName": "Issue Date"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Handy Measures"
+                    }
+                  },
+                  "Property": "Total Funded Amount"
+                }
+              },
+              "queryRef": "Handy Measures.Total Funded Amount",
+              "nativeQueryRef": "Total Funded Amount"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Bank_Loan_Data"
+                    }
+                  },
+                  "Property": "int_rate"
+                }
+              },
+              "queryRef": "Sum(Bank_Loan_Data.int_rate)",
+              "nativeQueryRef": "Interest %",
+              "displayName": "Interest %"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Bank_Loan_Data"
+                        }
+                      },
+                      "Property": "installment"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Bank_Loan_Data.installment)",
+              "nativeQueryRef": "Installment",
+              "displayName": "Installment"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Handy Measures"
+                    }
+                  },
+                  "Property": "Total Amount Received"
+                }
+              },
+              "queryRef": "Handy Measures.Total Amount Received",
+              "nativeQueryRef": "Amount Received",
+              "displayName": "Amount Received"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Bank_Loan_Data"
+                  }
+                },
+                "Property": "id"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "total": [
+        {
+          "properties": {
+            "totals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'''Segoe UI Bold'', wf_segoe-ui_bold, helvetica, arial, sans-serif'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            },
+            "backColorPrimary": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 3,
+                      "Percent": -0.5
+                    }
+                  }
+                }
+              }
+            },
+            "backColorSecondary": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0.2
+                    }
+                  }
+                }
+              }
+            },
+            "fontColorPrimary": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.1
+                    }
+                  }
+                }
+              }
+            },
+            "fontColorSecondary": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "grid": [
+        {
+          "properties": {
+            "gridHorizontalColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.2
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "65.3000900610471D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(Bank_Loan_Data.id)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "140.80762402944353D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Bank_Loan_Data.purpose"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "118.80762177582119D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Bank_Loan_Data.home_ownership"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "50.64609871967266D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Bank_Loan_Data.grade"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "75.32304855060993D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Bank_Loan_Data.sub_grade"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "144.96914628940195D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Handy Measures.Total Funded Amount"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "84.13066847259302D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(Bank_Loan_Data.installment)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "80.45373109538167D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(Bank_Loan_Data.int_rate)"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "stylePreset": [
+        {
+          "properties": {
+            "name": {
+              "expr": {
+                "Literal": {
+                  "Value": "'AlternatingRowsNew'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

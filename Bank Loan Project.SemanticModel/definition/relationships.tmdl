@@ -1,0 +1,29 @@
+relationship 09a3c11e-659b-4ac0-9fbc-0526d2f255a7
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Bank_Loan_Data.last_credit_pull_date
+	toColumn: LocalDateTable_9e6f5991-ffa5-420e-b907-82cd54fdb641.Date
+
+relationship 49fba996-3701-4b2f-bfed-a3bd43d5697b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Bank_Loan_Data.last_payment_date
+	toColumn: LocalDateTable_9b611f8b-45d2-4521-89c6-10507a93dc18.Date
+
+relationship f91ca751-2bbb-4c19-83f9-e721c0c10ede
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Bank_Loan_Data.next_payment_date
+	toColumn: LocalDateTable_38bb0bbe-abdf-477a-a9c1-8997aedbf9fb.Date
+
+relationship 57a61ff8-47a2-49b6-970f-dabe46fe61d1
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Dates Bible'.Date
+	toColumn: LocalDateTable_67078c6f-9cbb-4381-acfa-48507385ad4a.Date
+
+relationship 345c0cd4-7ee9-4117-9765-087e902c9831
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Dates Bible'.WeekEnding
+	toColumn: LocalDateTable_29e9b50a-ad3c-4bbd-8999-6adf4bb83525.Date
+
+relationship 33ef0f1a-1ec5-be2e-f535-b0cd9754d3e9
+	fromColumn: Bank_Loan_Data.issue_date
+	toColumn: 'Dates Bible'.Date
+

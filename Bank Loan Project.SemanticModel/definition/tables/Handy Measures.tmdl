@@ -1,0 +1,135 @@
+table 'Handy Measures'
+	lineageTag: 8a56773e-a4ce-4a96-ae16-fe13dc17fb81
+
+	measure 'Total Loan Applications' = COUNT(Bank_Loan_Data[id])
+		formatString: #,0
+		lineageTag: ebf52edf-d600-4804-a66f-e0f1dbe94932
+
+	measure 'MTD Loan Applications' = CALCULATE(TOTALMTD([Total Loan Applications],'Dates Bible'[Date]))
+		formatString: 0
+		lineageTag: 139272f4-8110-403e-8b32-148253cad4a5
+
+	measure 'Previous MTD Loan Applications' = CALCULATE([Total Loan Applications],DATESMTD(DATEADD('Dates Bible'[Date],-1,MONTH)))
+		formatString: 0
+		lineageTag: 4c5b5f7e-c028-4f6e-a042-0ef362943ccb
+
+	measure 'MoM Loan Applications' = ([MTD Loan Applications]-[Previous MTD Loan Applications])/[Previous MTD Loan Applications]
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 972fba9b-581b-4d35-a169-8788b66db31f
+
+	measure 'Total Funded Amount' = sum(Bank_Loan_Data[loan_amount])
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 3e3e3175-f2a1-408f-99a0-b6d6b85af5e2
+
+	measure 'MTD Funded Amount' = CALCULATE(TOTALMTD([Total Funded Amount],'Dates Bible'[Date]))
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 59f0f93d-1e6a-4fdf-9624-4b6d49fb2578
+
+	measure 'Previous MTD Funded Amount' = CALCULATE([Total Funded Amount],DATESMTD(DATEADD('Dates Bible'[Date],-1,MONTH)))
+		formatString: 0
+		lineageTag: 450f58ac-158f-4025-bcfc-e981e3258c46
+
+	measure 'MoM Funded Amount' = ([MTD Funded Amount]-[Previous MTD Funded Amount])/[Previous MTD Funded Amount]
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: b412e11a-4118-4486-a7b1-1f21994188ac
+
+	measure 'Total Amount Received' = sum(Bank_Loan_Data[total_payment])
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 40ff2c9b-2d57-4887-b06b-822df2c7ef2a
+
+	measure 'MTD Received Amount' = CALCULATE(TOTALMTD([Total Amount Received],'Dates Bible'[Date]))
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 0895bffe-38f2-4ccb-bfd3-e5e805863544
+
+	measure 'Previous MTD Recieved Amount' = CALCULATE([Total Amount Received],DATESMTD(DATEADD('Dates Bible'[Date],-1,month)))
+		formatString: 0
+		lineageTag: 6bc3a2ff-8a16-4d93-8837-4bb9bce1ad4e
+
+	measure 'MoM Received Amount' = DIVIDE(([MTD Received Amount]-[Previous MTD Recieved Amount]),[Previous MTD Recieved Amount])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: f539e317-fe0c-4ce1-ade5-1699b67b220e
+
+	measure 'Avg Interest Rate' = AVERAGE(Bank_Loan_Data[int_rate])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 67cdaa4c-cf07-408b-9fa8-3df55afba0a8
+
+	measure 'MTD Average interest Rate' = CALCULATE(TOTALMTD([Avg Interest Rate],'Dates Bible'[Date]))
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 41d308c4-86f8-4b88-8579-6484fcff40ae
+
+	measure 'Previous MTD Average Int Rate' = CALCULATE([Avg Interest Rate],DATESMTD(DATEADD('Dates Bible'[Date],-1,MONTH)))
+		lineageTag: f23df61d-8331-4f0b-8c6b-1142dcfd20f5
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Mom Average Interest Rate' = DIVIDE(([MTD Average interest Rate]-[Previous MTD Average Int Rate]),[Previous MTD Average Int Rate])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 58ffbbde-c19c-47fc-b8c2-a586cb7a5201
+
+	measure 'Avg DTI' = AVERAGE(Bank_Loan_Data[dti])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 714c1949-1568-431d-8af2-6410ae35f3ee
+
+	measure 'MTD Average DTI' = CALCULATE(TOTALMTD([Avg DTI],'Dates Bible'[Date]))
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 3b544882-f15b-4a96-861f-6114fce0cbf5
+
+	measure 'Previous MTD Avg DTI Rate' = CALCULATE([Avg DTI],DATESMTD(DATEADD('Dates Bible'[Date],-1,MONTH)))
+		lineageTag: fec6d7fb-8277-4ed5-bbe2-be6147f4c7be
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'MoM Avg DTI Rate' = DIVIDE(([MTD Average DTI]-[Previous MTD Avg DTI Rate]),[Previous MTD Avg DTI Rate])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 546c9f52-e613-48b6-8278-7b8fdd48dffa
+
+	measure 'Good Loan Count' = CALCULATE(COUNTROWS(Bank_Loan_Data),Bank_Loan_Data[Good Vs Bad Loan]="Good Loan")
+		formatString: 0
+		lineageTag: 131adab3-684d-4b73-acc0-0ec44e3bb192
+
+	measure 'Good Loan %' = DIVIDE([Good Loan Count],[Total Loan Applications])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 4b39fbcd-898e-444c-ac69-0299839df1e1
+
+	measure 'Good Loan Applications' = CALCULATE([Total Loan Applications],Bank_Loan_Data[Good Vs Bad Loan]="Good Loan")
+		formatString: 0.0
+		lineageTag: c25c9804-08a0-4a10-b9ae-6e63af138de8
+
+	measure 'Good Loan Funded Amount' = CALCULATE([Total Funded Amount],Bank_Loan_Data[Good Vs Bad Loan]="Good Loan")
+		formatString: \$#,0.0;(\$#,0.0);\$#,0.0
+		lineageTag: 8c58c135-d9d6-42a2-b7f7-30951c2a79dd
+
+	measure 'Good Loan Received Amount' = CALCULATE([Total Amount Received],Bank_Loan_Data[Good Vs Bad Loan]="Good Loan")
+		formatString: \$#,0.0;(\$#,0.0);\$#,0.0
+		lineageTag: c60ef4ab-95c0-4e0f-9bd5-a38a01b44adb
+
+	measure 'Bad Loan Applications' = CALCULATE([Total Loan Applications],Bank_Loan_Data[Good Vs Bad Loan]="Bad Loan")
+		formatString: 0.0
+		lineageTag: 8ebf0948-16ee-4674-98ea-ce3691a62d12
+
+	measure 'Bad Loan %' = DIVIDE([Bad Loan Applications],[Total Loan Applications])
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 44b21d55-7a4d-4606-b5c2-e55b7799c864
+
+	measure 'Bad Loan Funded Amount' = CALCULATE([Total Funded Amount],Bank_Loan_Data[Good Vs Bad Loan]="Bad Loan")
+		formatString: \$#,0.0;(\$#,0.0);\$#,0.0
+		lineageTag: 9a0fed0e-128f-48d1-bcab-4497375c9054
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Bad Loan Received Amount' = CALCULATE([Total Amount Received],Bank_Loan_Data[Good Vs Bad Loan]="Bad Loan")
+		formatString: \$#,0.0;(\$#,0.0);\$#,0.0
+		lineageTag: c37aef26-29ee-4a8d-bed9-eac055ebd6fb
+
+	partition 'Handy Measures' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+

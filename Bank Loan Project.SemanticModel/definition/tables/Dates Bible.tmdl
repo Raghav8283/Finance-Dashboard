@@ -1,0 +1,192 @@
+table 'Dates Bible'
+	lineageTag: 6edefbdf-16fe-42a7-8bac-87cd553e32f6
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 75748b12-45e6-40fb-9452-288c818ef1f6
+		summarizeBy: none
+		sourceColumn: Date
+
+		variation Variation
+			isDefault
+			relationship: 57a61ff8-47a2-49b6-970f-dabe46fe61d1
+			defaultHierarchy: LocalDateTable_67078c6f-9cbb-4381-acfa-48507385ad4a.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Year
+		dataType: string
+		lineageTag: 7add5cc8-921e-471e-8739-70677fea4711
+		summarizeBy: none
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column QuarterOfYear
+		dataType: int64
+		formatString: 0
+		lineageTag: fbbfe8cf-8ec6-48aa-a77f-2312cb565922
+		summarizeBy: sum
+		sourceColumn: QuarterOfYear
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthOfYear
+		dataType: int64
+		formatString: 0
+		lineageTag: ae1bc8b7-726b-430c-be2f-d263aed3edeb
+		summarizeBy: sum
+		sourceColumn: MonthOfYear
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayOfMonth
+		dataType: int64
+		formatString: 0
+		lineageTag: c55db769-efa6-4b5d-b2c0-1de9fe570e8c
+		summarizeBy: sum
+		sourceColumn: DayOfMonth
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateInt
+		dataType: int64
+		formatString: 0
+		lineageTag: e179407c-1c18-42a9-be24-54c9e287bb90
+		summarizeBy: sum
+		sourceColumn: DateInt
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthName
+		dataType: string
+		lineageTag: 40449310-da35-40d8-98d5-3a7c0335a963
+		summarizeBy: none
+		sourceColumn: MonthName
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthInCalendar
+		dataType: string
+		lineageTag: 57403836-e4bd-49a8-8638-97943f7d726a
+		summarizeBy: none
+		sourceColumn: MonthInCalendar
+
+		annotation SummarizationSetBy = Automatic
+
+	column QuarterInCalendar
+		dataType: string
+		lineageTag: 63279e62-e221-40c0-9f9f-a70388c37e39
+		summarizeBy: none
+		sourceColumn: QuarterInCalendar
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayInWeek
+		dataType: int64
+		formatString: 0
+		lineageTag: a2c6d349-3829-4d8c-a6a8-23ffc31d32b9
+		summarizeBy: sum
+		sourceColumn: DayInWeek
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayOfWeekName
+		dataType: string
+		lineageTag: e5da4a03-7b27-43b5-bef0-b4bd290a2d9d
+		summarizeBy: none
+		sourceColumn: DayOfWeekName
+
+		annotation SummarizationSetBy = Automatic
+
+	column WeekEnding
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: b738a74d-b73c-46ca-a03a-c44ec019e22f
+		summarizeBy: none
+		sourceColumn: WeekEnding
+
+		variation Variation
+			isDefault
+			relationship: 345c0cd4-7ee9-4117-9765-087e902c9831
+			defaultHierarchy: LocalDateTable_29e9b50a-ad3c-4bbd-8999-6adf4bb83525.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Week Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: f1e134ca-8dda-45dc-9900-a958a550e2da
+		summarizeBy: sum
+		sourceColumn: Week Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthnYear
+		dataType: int64
+		formatString: 0
+		lineageTag: 024409b8-cdbe-40a6-a19b-2744af9782b3
+		summarizeBy: sum
+		sourceColumn: MonthnYear
+		sortByColumn: MonthOfYear
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column QuarternYear
+		dataType: int64
+		formatString: 0
+		lineageTag: 234f8de0-a4a1-487f-968d-562538882335
+		summarizeBy: sum
+		sourceColumn: QuarternYear
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShortYear
+		dataType: string
+		lineageTag: 52e3dd72-90c5-4822-9f81-9f2e3176c10b
+		summarizeBy: none
+		sourceColumn: ShortYear
+
+		annotation SummarizationSetBy = Automatic
+
+	column FY
+		dataType: string
+		lineageTag: 84fca2f1-c7b2-4db5-ae70-e3be293d70c6
+		summarizeBy: none
+		sourceColumn: FY
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month_Shortname
+		dataType: string
+		lineageTag: a81d2364-d9ec-43a0-adee-d1d926fa35aa
+		summarizeBy: none
+		sourceColumn: Month_Shortname
+		sortByColumn: MonthOfYear
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Dates Bible' = m
+		mode: import
+		source =
+				let
+				    Source = #"Dates Table"(#date(2021, 1, 1), #date(2021, 12, 31), 4),
+				    #"Inserted First Characters" = Table.AddColumn(Source, "First Characters", each Text.Start([MonthName], 3), type text),
+				    #"Uppercased Text" = Table.TransformColumns(#"Inserted First Characters",{{"First Characters", Text.Upper, type text}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Uppercased Text",{{"First Characters", "Month_Shortname"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
